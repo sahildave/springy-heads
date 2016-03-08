@@ -1,9 +1,7 @@
 package com.flipkart.chatheads.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -24,10 +22,9 @@ import java.io.Serializable;
 /**
  * Created by kirankumar on 10/02/15.
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ChatHead<T extends Serializable> extends ImageView implements SpringListener {
 
-    final int CLOSE_ATTRACTION_THRESHOLD = ChatHeadUtils.dpToPx(getContext(), 110);
+    final int CLOSE_ATTRACTION_THRESHOLD = ChatHeadUtils.dpToPx(getContext(), 70);
     private final int touchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     private final float DELTA = ChatHeadUtils.dpToPx(getContext(), 10);
     private SpringSystem springSystem;

@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -312,8 +313,7 @@ public class ChatHeadContainer<T extends Serializable> extends FrameLayout imple
             int top = closeButton.getTop();
             double xDiff = touchX - left - closeButton.getMeasuredWidth() / 2;
             double yDiff = touchY - top - closeButton.getTranslationY() - closeButton.getMeasuredHeight() / 2;
-            double distance = Math.hypot(xDiff, yDiff);
-            return distance;
+            return Math.hypot(xDiff, yDiff);
         }
     }
 

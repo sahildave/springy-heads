@@ -3,7 +3,7 @@ package com.flipkart.springyheads.demo;
 import android.content.Context;
 import android.graphics.Point;
 
-import com.flipkart.chatheads.reboundextensions.ChatHeadUtils;
+import com.flipkart.chatheads.ChatHeadUtils;
 import com.flipkart.chatheads.ui.ChatHeadDefaultConfig;
 
 /**
@@ -14,8 +14,8 @@ public class CustomChatHeadConfig extends ChatHeadDefaultConfig {
         super(context);
         setHeadHorizontalSpacing(ChatHeadUtils.dpToPx(context, -2));
         setHeadVerticalSpacing(ChatHeadUtils.dpToPx(context, 2));
-        setHeadWidth(ChatHeadUtils.dpToPx(context, 50));
-        setHeadHeight(ChatHeadUtils.dpToPx(context, 50));
+        setHeadWidth(ChatHeadUtils.dpToPx(context, 79));
+        setHeadHeight(ChatHeadUtils.dpToPx(context, 102));
         setInitialPosition(new Point(xPosition, yPosition));
         setCloseButtonHeight(ChatHeadUtils.dpToPx(context, 50));
         setCloseButtonWidth(ChatHeadUtils.dpToPx(context, 50));

@@ -8,7 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
@@ -27,14 +28,11 @@ import com.flipkart.chatheads.ui.ChatHeadViewAdapter;
 import com.flipkart.chatheads.ui.CircularArrangement;
 import com.flipkart.chatheads.ui.MaximizedArrangement;
 import com.flipkart.chatheads.ui.MinimizedArrangement;
-import com.flipkart.springyheads.demo.R;
 
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity {
-
-
+public class MainActivity extends AppCompatActivity {
     private View circularClickArea;
     private SharedPreferences chatHeadPreferences;
     private ChatHeadContainer chatContainer;
@@ -85,7 +83,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void addChatHead() {
-        chatContainer.addChatHead("head" + Math.random(), false, true);
+        chatContainer.addChatHead(Math.random(), false, true);
     }
 
     @Override
@@ -110,12 +108,19 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public Drawable getChatHeadDrawable(Object key) {
-                return getResources().getDrawable(R.drawable.head);
+                double key1 = (double) key;
+                if (key1 < 0.3) {
+                    return ContextCompat.getDrawable(MainActivity.this, R.drawable.pap);
+                } else if (key1 < 0.6){
+                    return ContextCompat.getDrawable(MainActivity.this, R.drawable.tats);
+                } else {
+                    return ContextCompat.getDrawable(MainActivity.this, R.drawable.totc);
+                }
             }
 
             @Override
             public Drawable getPointerDrawable() {
-                return getResources().getDrawable(R.drawable.circular_ring);
+                return ContextCompat.getDrawable(MainActivity.this, R.drawable.circular_ring);
             }
 
             @Override
@@ -131,6 +136,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onChatHeadRollOver(Object key, final ChatHead chatHead) {
+                Log.d(getClass().getSimpleName(), "RollOver " + String.valueOf(key));
                 chatHeadLabel.setTranslationX(chatHead.getTranslationX() + chatHead.getMeasuredWidth() / 2 - chatHeadLabel.getMeasuredWidth() / 2);
                 float yStart = chatHead.getTranslationY() + chatHead.getMeasuredHeight() / 2 - chatHeadLabel.getMeasuredHeight();
                 float yEnd = chatHead.getTranslationY() - chatHeadLabel.getMeasuredHeight();
@@ -150,7 +156,7 @@ public class MainActivity extends ActionBarActivity {
                 objectAnimatorTranslationY.setDuration(500);
                 objectAnimatorTranslationY.setInterpolator(new OvershootInterpolator());
                 objectAnimatorTranslationY.start();
-                //chatHeadLabel.setVisibility(View.VISIBLE);
+                chatHeadLabel.setVisibility(View.VISIBLE);
             }
 
             @Override

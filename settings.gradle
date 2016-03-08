@@ -1,2 +1,3 @@
-include ':springy-heads', ':demo'
+include ':springy-heads', ':demo-springy-heads'
 project(':springy-heads').projectDir = new File(rootDir, 'library')
+project(':demo-springy-heads').projectDir = new File(rootDir, 'demo')
